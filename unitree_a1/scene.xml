@@ -1,6 +1,4 @@
-<mujoco model="a1 scene">
-
-  <include file="a1.xml"/>
+<mujoco model="scene">
 
   <statistic center="0 0 0.1" extent="0.8"/>
 
@@ -19,8 +17,14 @@
         reflectance="0.2"/>
   </asset>
 
+  <include file="a1_position.xml"/>
+
   <worldbody>
-    <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
+    <camera name="tracking_top" pos="0 0 1.25" xyaxes="1 0 0 0 1 0" mode="trackcom"/>
+    <camera name="tracking_x" pos="-1 0 0.6" xyaxes="0 -1 0 0.342 0 0.940" fovy="60" mode="trackcom"/>
+    <camera name="tracking_y" pos="0 -1 0.6" xyaxes="1 0 0 0 0.342 0.940" fovy="60" mode="trackcom"/>
+    <light name="ceiling" pos="0 0 2" dir="0 0 -1" directional="true"/>
+    <light name="spotlight" pos="0 -1 2" mode="targetbodycom" target="trunk" />
     <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
   </worldbody>
 
